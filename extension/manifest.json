@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "CVD Image Viewer",
+  "description": "View CVD images in a web browser",
+  "version": "0.1",
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "64": "assets/icon-64.png"
+  },
+  "action": {
+    "default_popup": "content/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [],
+  "background": {}
+}
