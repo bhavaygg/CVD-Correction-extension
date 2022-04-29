@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <meta
-    http-equiv="Content-Security-Policy"
-    content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;"
-  />
-  <head>
-    <script src="jquery-3.1.0.min.js"></script>
-    <title>CVD Viewer</title>
-    <link rel="stylesheet" type="text/css" href="popup.css" />
-  </head>
-  <body>
-    <h1>CVD Viewer</h1>
-    <button id="grabBtn">Change Images</button>
-    <script src="popup.js"></script>
-  </body>
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap:; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src ; img-src data: blob: android-webview-video-poster:; style-src * 'unsafe-inline';">
+    <head>
+        <title>CVD Viewer</title>
+        <link rel="stylesheet" type="text/css" href="popup.css"/>
+    </head>
+    <body>
+        <h1>CVD Viewer</h1>
+        <input id="enabled" type="checkbox">
+		<label for="enabled">Enable for all sites</label>
+        <button id="grabBtn1">Protoify Images</button>
+        <button id="grabBtn2">Deutoify Images</button>
+        <button id="grabBtn3">Tritanify Images</button>
+        <script src="popup.js"></script>
+    </body>
 </html>

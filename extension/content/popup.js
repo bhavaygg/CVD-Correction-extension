@@ -1,36 +1,41 @@
-const grabBtn = document.getElementById("grabBtn");
-grabBtn.addEventListener("click", () => {
-  var opener = window.opener;
-  if (opener) {
-    var oDom = opener.document;
-    var elem = oDom.getElementById("img");
-    alert(elem);
-    if (elem) {
-      var val = elem.value;
-    }
-  }
-
-  console.log(image_list);
-  alert(image_list.length);
-  //const execSync = require('child_process').execSync;
-  $.ajax({
-    type: "POST",
-    data: { foo: image_list },
-    url: "http://127.0.0.1:105/gen_cvd/",
-    success: function (msg) {
-      $(".answer").html(msg);
-    },
-    headers: { "Content-Type": "application/json" },
-  });
+const grabBtn1 = document.getElementById("grabBtn1");
+grabBtn1.addEventListener("click",() => {    
+    chrome.storage.sync.set({cvd_type: "proto"}, function() {
+        console.log("proto");
+    });
 });
 
-function popup() {
-  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    var activeTab = tabs[0];
-    chrome.tabs.sendMessage(activeTab.id, { message: "start" });
-  });
+const grabBtn2 = document.getElementById("grabBtn2");
+grabBtn2.addEventListener("click",() => {    
+    chrome.storage.sync.set({cvd_type: "deuto"}, function() {
+        console.log("deuto");
+    });
+});
+
+const grabBtn3 = document.getElementById("grabBtn3");
+grabBtn3.addEventListener("click",() => {    
+    chrome.storage.sync.set({cvd_type: "trita"}, function() {
+        console.log("trita");
+    });
+});
+
+
+const enabledbtn = document.getElementById("enabled");
+enabledbtn.addEventListener("click",() => {  
+    chrome.storage.sync.set({
+		enabled: document.getElementById("enabled").checked
+	}, function() {
+        console.log("value changed");		
+	});
+});
+
+
+function restore() {
+	chrome.storage.sync.get({
+		enabled: false,
+        cvd_type: "proto"		
+	}, function(items) {
+		document.getElementById("enabled").checked = items.enabled;
+	});
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("button1").addEventListener("click", popup);
-});
+document.addEventListener("DOMContentLoaded", restore);
