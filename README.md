@@ -1,8 +1,5 @@
 # IR2022_T9
 
-Mid Sem Update
-
-Baseline implemented to convert generated CVD corrected images and includes script to download and CVD correct desired youtube scripts
 
 - [Baseline](https://github.com/Chokerino/IR2022_T9/blob/master/baseline.py) - We create a simulation model which transforms the image to the LMS color space where filters for the desired CVD simulation is applied to it. The image generated is an accurate representation for what is being perceived by people suffering from CVD and is taken as the ground truth. Our model then applied an additional transformation which shifts the image into a more visible specter. This is a simple and fast approach which emphasizes the contrast between colors that are hard to distinguish.
 - [Gaussian Mixture Model(GMM)](https://github.com/Chokerino/IR2022_T9/blob/master/gmm_em.py) - We also implement a GMM based model.\cite{huang2009image} For each pixel in the image, the perceptual difference between any two colors can be approximated by the Euclidean distance between them. To model the underlying color distribution, we assume that the distribution can be well approximated by K Gaussians. The probability density is of the form - \(p(x|\theta)=\sum_{i=1}^{K}\omega_i G_i(x|\theta_i)\). The hue shift of a color depends on the posterior probability of each Gaussian and the corresponding mapping function. The distance between a pair of gaussians is then computed using KL divergence. The colors are then interpolated to ensure the local color smoothness for the recolored image.
